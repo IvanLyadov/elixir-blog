@@ -1,0 +1,33 @@
+<div class="post-wrapper">
+  <h1><%= @post.title %></h1>
+
+  <div>
+    <%= @post.body %>
+  </div>
+
+  <div class="post-description">
+    <div class="">
+    <span>Creation date:</span>
+      <strong>
+        <span><%= @post.inserted_at.day %>-<%= @post.inserted_at.month %>-<%= @post.inserted_at.year %></span>
+        <span><%= @post.inserted_at.hour %>:<%= @post.inserted_at.minute %></span>
+      </strong>
+    </div>
+    <div>
+      <span>Modification date:</span>
+      <strong>
+      <span><%= @post.updated_at.day %>-<%= @post.updated_at.month %>-<%= @post.updated_at.year %> </span>
+      <span><%= @post.updated_at.hour %>:<%= @post.updated_at.minute %></span>
+      </strong>
+    </div>
+    <div>
+      <span>Autor:</span>
+      <strong>
+      <span><%= @post.author %></span>
+      </strong>
+    </div>
+  </div>
+
+  <span><%= link "Back", to: Routes.blog_path(@conn, :index) %></span>
+
+</div>

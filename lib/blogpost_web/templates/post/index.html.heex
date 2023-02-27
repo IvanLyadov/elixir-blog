@@ -1,0 +1,40 @@
+<h1>Post list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Creation date</th>
+      <th>Modification date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @posts do %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.body %></td>
+      <td><%= post.author %></td>
+      <td>
+        <span><%= post.inserted_at.day %>-<%= post.inserted_at.month %>-<%= post.inserted_at.year %></span>
+        <span><%= post.inserted_at.hour %>:<%= post.inserted_at.minute %></span>
+      </td>
+      <td>
+        <span><%= post.updated_at.day %>-<%= post.updated_at.month %>-<%= post.updated_at.year %> </span>
+        <span><%= post.updated_at.hour %>:<%= post.updated_at.minute %></span>
+      </td>
+
+      <td>
+        <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>
+        <span><%= link "Edit", to: Routes.post_path(@conn, :edit, post) %></span>
+        <span><%= link "Delete", to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><strong><%= link "Add Post", to: Routes.post_path(@conn, :new) %></strong></span>
